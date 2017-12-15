@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getPosts } from '../actions/posts';
+import PostForm from './PostForm';
 import axios from 'axios';
 import {
   Container,
@@ -20,13 +21,11 @@ class Dashboard extends React.Component {
   displayPosts = () => {
     return this.props.posts.map( p => {
       return (
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as='h2'>{p.title}</Header>
-            <p>{p.body}</p>
-            <Divider></Divider>
-          </Grid.Column>
-        </Grid.Row>
+        <Segment basic>
+          <Header as='h2'>{p.title}</Header>
+          <p>{p.body}</p>
+          <Divider></Divider>
+        </Segment>
       )
     });
   }
@@ -34,8 +33,25 @@ class Dashboard extends React.Component {
   render () {
     return (
       <Container>
-        <Header as='h1' block inverted style={headerStyle} color='yellow'>User Dashboard</Header>
-        <Grid>{ this.displayPosts() }</Grid>
+        <Header
+          as='h1'
+          block
+          inverted
+          style={headerStyle}
+          color='yellow'
+        >
+        User Dashboard
+      </Header>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              { this.displayPosts() }
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <PostForm />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Container>
     )
   }
