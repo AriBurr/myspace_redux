@@ -40,7 +40,7 @@ class PostForm extends React.Component {
           control={TextArea}
           onChange={this.handleChange}
         />
-      <Button className='ui yellow button' type='submit'>Submit</Button>
+      <Button className='ui yellow button' type='submit'>Create Post</Button>
       <Divider hidden />
       </Form>
     );

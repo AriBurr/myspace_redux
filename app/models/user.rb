@@ -5,4 +5,11 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
   has_many :posts
+
+  serialize :friends, Array
+
+  def self.friends(ids)
+    where("id IN (?)", ids)
+  end
+
 end
